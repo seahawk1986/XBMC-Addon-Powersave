@@ -1,0 +1,68 @@
+[B]VDR POWERSAVE SERVICE[/B]
+
+[B]Prerequisits:[/B]
+
+- When selecting "Poweroff" in XBMC, your system should well ... power off.
+
+- When planning to use "Suspend" or "Hibernate", your system should also do it,  
+  as well as waking up flawless. Otherwise dont use these options. XBMC should
+  come up at startup, as well.
+
+- Scheduled wakeups are highly system specific. Therefore I cannot tell you how to 
+  setup this feature for your machine. To set the alarm clock, the service will call
+  an external script given a "timestamp" parameter. However, assuming your using
+  Linux-Kernel 2.6 or newer, and your mainboard supports ACPI wakeup the script 
+  would look like this:
+
+#!/bin/sh
+echo 0 > /sys/class/rtc/rtc0/wakealarm
+echo $1 > /sys/class/rtc/rtc0/wakealarm
+
+  If thats the case, you might review the file /etc/default/rcS for having the entries:
+UTC=yes
+HWCLOCKACCESS=no
+  
+- a VDR backend service, would be usefull to be present for this service. :-)
+
+[B]Configuration:[/B]
+
+- [B]VDR Host & SVDRP-Port:[/B] Those are used to "talk" with your VDR.
+- [B]Wakeup before record:[/B] Time to boot up, before the timer. 
+- [B]Wakeuptime command (cmd [timestamp]):[/B] Script to call setting the alarm clock.
+- [B]Powersave when idle:[/B] Do you want to power down or suspend when idle?
+- [B]Powersafe after:[/B] Idle time until powersave.
+- [B]Overrun after playback/record:[/B] Extra time when exceeding idle time during record or 
+     playback.
+- [B]Daily wakeup:[/B] Do you want to wake the system once a day?
+- [B]Daily wakeup time (HH:MM):[/B] When do you want to wakeup?
+
+[B]Features:[/B]
+- This service handles powersave and wakeup timers independant. Therefore it will wakeup 
+  when shutted down by accident or another program than XBMC.
+
+- Timers are checked periodically, sudden changes are to be considered. 
+
+- Idle time is defined as not touching the remote, keyboard or mouse. The service takes care
+  of upcomming and active recordings as well as media playback. For example, if you setup
+  30 minutes idle timeout and watch a 45 minutes video the system normally should power down
+  for being idle after playback stops. But the service will give you the "Overrun" time
+  to wake up yourself and grab the remote. ;-)
+
+- Daily wakeup comes at hand when its about to update your EPGs. 
+
+[B]Limitations, known issues:[/B]
+- Remote commands issued by web Interface, wont reset the idle counter. This is because
+  XBMC dont handles them like common input. 
+
+- The service is unable to detect VDR activities to other clients. Say, you stream TV
+  towards your local PC, it would not notice it. 
+
+- Due to a Bug in XBMC, profiles are not handled very well when it comes to services. 
+  Logging out may result in killing the services, not coming up when logging back again. 
+
+[B]History:[/B]
+
+- [B]0.1.0[/B] Initial Release
+
+Disclaimer: This addon is free and comes with no warranty at all. Thus, when it causes your
+system to run amok, turns it into a transformer and kills the pope - its not my fault!

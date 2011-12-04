@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <string id="30000">VDR Host</string>
+    <string id="30001">SVDRP-Port</string>
+    <string id="30002">Wakeup before record</string>
+    <string id="30003">Wakeuptime command (cmd [timestamp])</string>
+    <string id="30010">Logout when idle</string>
+    <string id="30011">Logout after</string>
+    <string id="30012">Powersave when idle</string>
+    <string id="30013">Powersafe after</string>
+    <string id="30014">Overrun after playback/record</string>
+    <string id="30020">Daily wakeup</string>
+    <string id="30021">Daily wakeup time (HH:MM)</string>
+</strings>

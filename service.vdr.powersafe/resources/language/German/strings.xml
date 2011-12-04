@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <string id="30000">VDR Host</string>
+    <string id="30001">SVDRP-Port</string>
+    <string id="30002">Aufwach-Vorlauf vor Aufzeichnung</string>
+    <string id="30003">Aufwach-Kommando (cmd [timestamp])</string>
+    <string id="30010">Abmelden bei Untätigkeit</string>
+    <string id="30011">Abmelden nach</string>
+    <string id="30012">Abschalten bei Untätigkeit</string>
+    <string id="30013">Abschalten nach</string>
+    <string id="30014">Nachlauf bei Aufnahme/Wiedergabe</string>
+    <string id="30020">Täglich wecken</string>
+    <string id="30021">Uhrzeit für tägliches Wecken (SS:MM)</string>
+</strings>
